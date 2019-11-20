@@ -1,0 +1,29 @@
+<%= form_with(model: christmasevening, local: true) do |form| %>
+  <% if christmasevening.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(christmasevening.errors.count, "error") %> prohibited this christmasevening from being saved:</h2>
+
+      <ul>
+        <% christmasevening.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :year %>
+    <%= form.text_field :year_id %>
+  </div>
+  <div class="field">
+    <%= form.label :giver %>
+    <%= form.select :giver_id, Participant.all.collect {|p| [ p.name, p.id ] } %>
+  </div>
+  <div class="field">
+    <%= form.label :receiver %>
+    <%= form.select :receiver_id, Participant.all.collect {|p| [ p.name, p.id ] } %>
+  </div>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

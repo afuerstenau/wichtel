@@ -1,0 +1,8 @@
+<p id="notice"><%= notice %></p>
+
+Jahr: <%= @christmasevening.year.year%><br>
+Geber Wichtel:<%= @christmasevening.giver.name%><br>
+Empfänger Wichtel:<%= @christmasevening.receiver.name%><br>
+
+<%= link_to 'Edit', edit_christmasevening_path(@christmasevening) %> |
+<%= link_to 'Back', christmasevenings_path %>
