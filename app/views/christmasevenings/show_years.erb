@@ -26,14 +26,4 @@
 
 <br>
 
-<%= form_with(url: "/christmasevenings/scramble/", method: "post") do |form| %>
-
-  <div class="field">
-    <%= form.label :year %>
-    <%= form.text_field :year %>
-  </div>
-  
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+<%= link_to 'New Christmasevening', new_christmasevening_path %>

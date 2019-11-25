@@ -1,6 +1,24 @@
 class ChristmaseveningsController < ApplicationController
   before_action :set_christmasevening, only: [:show, :edit, :update, :destroy]
 
+  def show_years
+    @christmasevenings = Christmasevening.where(year: params[:year])
+  end
+
+  def show_year_giver
+    giver_id = Participant.find_by name: params[:giver]
+    @christmasevening = Christmasevening.find_by year: params[:year], giver: giver_id
+  end
+
+  def scramble
+    year = params[:year]
+    Christmasevening.destroy_by(year: year)
+    Participant.all.each |giver| do
+      
+    end
+    redirect_to christmasevenings_url, notice: "Das Jahr #{year} wurde neu gemischt!"
+  end
+
   # GET /christmasevenings
   # GET /christmasevenings.json
   def index
@@ -69,6 +87,6 @@ class ChristmaseveningsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def christmasevening_params
-      params.require(:christmasevening).permit(:year_id, :giver_id, :receiver_id)
+      params.require(:christmasevening).permit(:year, :giver_id, :receiver_id)
     end
 end

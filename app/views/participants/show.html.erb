@@ -5,5 +5,10 @@
   <%= @participant.name %>
 </p>
 
+<p>
+<strong>Beschenkter:</strong>
+<%= @participant.receivers %>
+</p>
+
 <%= link_to 'Edit', edit_participant_path(@participant) %> |
 <%= link_to 'Back', participants_path %>
